@@ -1,29 +1,35 @@
 package kuo.spark
 
 import org.apache.hadoop.io.{IntWritable, Text}
+import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SQLContext
-import org.apache.spark.{SparkConf, SparkContext}
 
 /**
   * @author Kuo Zhang
   */
-object SparkApp {
+object SparkCoreApp {
 
   def main(args: Array[String]) {
 
-    // create Spark context with Spark configuration
-    val conf = new SparkConf()
-    conf.setAppName("Sample")
-    conf.setMaster("local[4]")
-    val sc = new SparkContext(conf)
+    val sc = SparkUtils.newSparkContext("SparkDemo", "local[2]")
 
     //    fromHadoopFile(sc)
     //    fromLocalFile(sc)
     //    worldCount(sc)
 
-        writeSequenceFile(sc)
-//    fromSequenceFile(sc)
+    //    writeSequenceFile(sc)
+    //    fromSequenceFile(sc)
+    demo(sc)
+  }
+
+  def demo(sc: SparkContext): Unit = {
+    val rdd = newRDD(sc)
+    rdd.foreach(println)
+  }
+
+  def newRDD(sc: SparkContext): RDD[(String, Int)] ={
+    sc.parallelize(List(("key1", 1), ("Key2", 2), ("Key3", 3)))
   }
 
   def fromHadoopFile(sc: SparkContext) {
@@ -40,13 +46,13 @@ object SparkApp {
   // see classes in package org.apache.hadoop.io for more
   def writeSequenceFile(sc: SparkContext) {
     val data = sc.parallelize(List(("key1", 1), ("Key2", 2), ("Key3", 3)))
-//    data.saveAsSequenceFile("hdfs://localhost:9000/spark/sequenceExample2/")
+    //    data.saveAsSequenceFile("hdfs://localhost:9000/spark/sequenceExample2/")
     data.saveAsSequenceFile("/home/kuo/spark/tmp/sequenceExample2/")
   }
 
   def fromSequenceFile(sc: SparkContext) {
     val path = "hdfs://localhost:9000/spark/sequenceExample2/"
-    val result = sc.sequenceFile[Text, IntWritable](path, classOf[Text], classOf[IntWritable]).map ( kv => (kv._1.toString, kv._2.get()) ).collect()
+    val result = sc.sequenceFile[Text, IntWritable](path, classOf[Text], classOf[IntWritable]).map(kv => (kv._1.toString, kv._2.get())).collect()
     //    result.foreach(t => {
     //      val tuple = asInstanceOf[Tuple2[String, Int]]
     //      println(tuple._1, tuple._2)
