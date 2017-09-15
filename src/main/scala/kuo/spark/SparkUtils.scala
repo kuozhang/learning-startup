@@ -1,5 +1,6 @@
 package kuo.spark
 
+import org.apache.spark.sql.SQLContext
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
@@ -12,5 +13,13 @@ object SparkUtils {
     conf.setAppName(appName)
     conf.setMaster(master)
     new SparkContext(conf)
+  }
+
+  def newSQLContext(appName: String, master: String): SQLContext = {
+    new SQLContext(new SparkContext(appName, master))
+  }
+
+  def newSQLContext(sc: SparkContext): SQLContext = {
+    new SQLContext(sc)
   }
 }
