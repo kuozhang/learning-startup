@@ -41,7 +41,7 @@ object GraphXSample {
     //    graph.triplets
 
     // change the attr of edges, also attrs of vertices passed in, if not needed, use mapEdges
-    graph.mapTriplets(triplet => triplet.attr + "foo").triplets.foreach(println)
+    graph.mapTriplets(triplet => triplet.attr + "misc").triplets.foreach(println)
 
     // change the attr of vertices, return a new graph
     //    graph.mapVertices((vid, vdata) => (vdata._1 + "foo", vdata._2 + "bar")).vertices.foreach(println)
