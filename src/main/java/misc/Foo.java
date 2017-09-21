@@ -35,16 +35,6 @@ public class Foo {
         //System.out.println(getDateAfterNowByHour(1, "yyyyMMdd"));
     }
 
-    private static String getSellBucket(Long sellerId){
-        Long sellerBucket = sellerId % 2048L;
-        return String.valueOf(sellerBucket);
-    }
-
-    private static String getInsertSqlOfCrowdIncr(Long sellerId){
-        String sellerBucket = getSellBucket(sellerId);
-        return "INSERT INTO TABLE crmx_crowd_snapshot_incr PARTITION (ds='${bizdate}', seller_bucket=" + sellerBucket + ")\n";
-    }
-
     /**
      * 获取当前之后或之前的几个小时的时间
      * @param hours

@@ -80,16 +80,6 @@
             <version>${hbase.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.taobao.hsf</groupId>
-            <artifactId>hsf.services</artifactId>
-            <version>2.1.1.6</version>
-        </dependency>
-        <dependency>
-            <groupId>com.taobao.hsf</groupId>
-            <artifactId>hsf.service.process</artifactId>
-            <version>2.1.1.6</version>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.26</version>
