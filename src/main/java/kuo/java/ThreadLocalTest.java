@@ -1,4 +1,4 @@
-package misc;
+package kuo.java;
 
 public class ThreadLocalTest extends Thread {
 

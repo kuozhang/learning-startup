@@ -11,7 +11,6 @@ import org.apache.spark.sql.SQLContext
 object SparkCoreApp {
 
   def main(args: Array[String]) {
-
     val sc = SparkUtils.newSparkContext("SparkDemo", "local[2]")
 
     //    fromHadoopFile(sc)
@@ -29,6 +28,11 @@ object SparkCoreApp {
   }
 
   def newRDD(sc: SparkContext): RDD[(String, Int)] ={
+    sc.parallelize(List(("key1", 1), ("Key2", 2), ("Key3", 3)))
+  }
+
+  def newRDDFromFile(sc: SparkContext): RDD[(String, Int)] ={
+    // hard-code file path in source dir
     sc.parallelize(List(("key1", 1), ("Key2", 2), ("Key3", 3)))
   }
 
@@ -81,4 +85,9 @@ object SparkCoreApp {
       .saveAsTextFile("hdfs://locahost:9000/spark/worldcount") // save as directory
   }
 
+  def reduceByKeyExample(sc: SparkContext): Unit = { }
+
+  def groupByKeyExample(sc: SparkContext): Unit = { }
+
+  def aggregateByKeyExample(sc: SparkContext): Unit = { }
 }
