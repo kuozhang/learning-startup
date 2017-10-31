@@ -90,4 +90,11 @@ object SparkCoreApp {
   def groupByKeyExample(sc: SparkContext): Unit = { }
 
   def aggregateByKeyExample(sc: SparkContext): Unit = { }
+
+  def testFoo(sc: SparkContext): Unit ={
+    val inputPath = ""
+    val rdd = sc.textFile(inputPath)
+    rdd.map(_.split("\001",-1).zipWithIndex.mkString("\t")).take(10).foreach(println)
+
+  }
 }

@@ -1,11 +1,9 @@
-package kuo.scala
-
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.regex.Pattern
-import java.util.{Calendar, Date}
 
-import org.joda.time.format.DateTimeFormat
 import org.joda.time.{DateTime, Months}
+import org.joda.time.format.DateTimeFormat
 
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Sorting
