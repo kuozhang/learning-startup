@@ -1,4 +1,4 @@
-package kuo.spark
+package spark
 
 import org.apache.spark._
 import org.apache.spark.graphx._

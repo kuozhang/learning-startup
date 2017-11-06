@@ -1,4 +1,4 @@
-package kuo.spark
+package spark
 
 import org.apache.spark.sql.SQLContext
 import org.apache.spark.{SparkConf, SparkContext}

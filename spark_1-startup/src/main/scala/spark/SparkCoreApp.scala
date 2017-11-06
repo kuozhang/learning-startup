@@ -1,4 +1,4 @@
-package kuo.spark
+package spark
 
 import org.apache.hadoop.io.{IntWritable, Text}
 import org.apache.spark.SparkContext
